@@ -85,7 +85,7 @@ model Enrollment {
   id         String           @id @default(cuid())
   userId     String
   courseId   String
-  status     EnrollmentStatus  @default(ACTIVE)
+  status     EnrollmentStatus @default(ACTIVE)
   enrolledAt DateTime         @default(now())
   user       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   course     Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
@@ -127,13 +127,13 @@ model QuizAttempt {
 }
 
 model Certificate {
-  id                String   @id @default(cuid())
-  userId            String
-  courseId          String
-  certificateNumber  String   @unique
-  issuedAt           DateTime @default(now())
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  course             Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  id               String   @id @default(cuid())
+  userId           String
+  courseId         String
+  certificateNumber String  @unique
+  issuedAt         DateTime @default(now())
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course           Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   @@unique([userId, courseId])
 }
