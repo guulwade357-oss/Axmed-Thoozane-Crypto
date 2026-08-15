@@ -1,1 +1,9 @@
-'use client'; import Link from 'next/link'; import {useState} from 'react'; export default function Login(){const[msg,setMsg]=useState('');async function submit(e:any){e.preventDefault();setMsg('Login endpoint will be connected to the production auth flow.')}return <main className="auth"><form onSubmit={submit}><Link className="brand" href="/"><span className="seal">AT</span><span>AXMED THOOZANE <b>CRYPTO</b></span></Link><h1>Student Login</h1><input type="email" placeholder="Email" required/><input type="password" placeholder="Password" required/><button className="btn">Login</button><p>{msg}</p><Link href="/register">Create an account</Link></form></main>}
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+
+export default function Login(){
+ const [msg,setMsg]=useState('');
+ async function submit(e:React.FormEvent){e.preventDefault();setMsg('Authentication backend is ready to be connected to your database.');}
+ return <main className="auth"><div className="panel"><Link className="brand" href="/"><span className="logo">TC</span><span>THOOZANE CRYPTO<small>TRADER • ACADEMY</small></span></Link><h1>Student Login</h1><p className="section-intro">Enter your academy account to continue learning.</p><form className="form" onSubmit={submit}><label>Email<input type="email" placeholder="you@example.com" required/></label><label>Password<input type="password" placeholder="••••••••" required/></label><button className="btn btn-primary" type="submit">Sign in →</button>{msg&&<p style={{color:'var(--gold)'}}>{msg}</p>}</form><p style={{color:'var(--muted)',fontSize:14}}>New to the academy? <Link href="/register" style={{color:'var(--gold)'}}>Create an account</Link></p><Link href="/" style={{color:'var(--muted)',fontSize:13}}>← Back to website</Link></div></main>
+}
